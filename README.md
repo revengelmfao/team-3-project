@@ -3,7 +3,7 @@
 
 ## **Overview**
 
-The purpose of this app is to provide an easy to use interface so that people can plan their events with ease asw well as find different dishes using spoonaculars API to find different recipes tailored to what the user searches for.
+The purpose of this app is to provide an easy to use interface so that people can plan their events with ease as well as find different dishes using spoonaculars API to find different recipes tailored to what the user searches for.
 ## **Features**
 * *Feature goes here*
 
