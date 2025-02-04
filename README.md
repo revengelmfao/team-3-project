@@ -43,6 +43,7 @@ Link goes here
 * Paige Harvey @napsta7
 * Bhavesh Khatwani @bhavesh68
 * Kevin Tovar @Kevxnt1
+* Alfonso Lorenzana @Alfonso1Lorenzana
 
 ---
   ## **License**
