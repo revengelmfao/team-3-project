@@ -42,7 +42,7 @@ Link goes here
 * Bradley Santiago @revengelmfao
 * Paige Harvey @napsta7
 * Bhavesh Khatwani @bhavesh68
-* Kevin Tovar @
+* Kevin Tovar @Kevxnt1
 
 ---
   ## **License**
