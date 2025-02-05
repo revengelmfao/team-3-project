@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div>
       <Nav />
-      <h1>View Events</h1>
+      <h1>Home</h1>
     </div>
   );
 };

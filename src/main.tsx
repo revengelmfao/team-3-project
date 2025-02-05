@@ -2,19 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import Home from './pages/Home';
-import LandingPage from './pages/LandingPage';
-import Login from './pages/Login';
+import LoginPage from './pages/LoginPage';
 import Plan from './pages/Plan';
+import Events from './pages/events';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './index.css';
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <LandingPage />,
+    path: '/loginpage',
+    element: <LoginPage />,
   },
   {
-    path: '/login',
-    element: <Login />,
+    path: '/events',
+    element: <Events />,
   },
   {
     path: '/home',
