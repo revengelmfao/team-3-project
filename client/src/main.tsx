@@ -4,7 +4,7 @@ import App from './App';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import Plan from './pages/Plan';
-import Events from './pages/events';
+import Events from './pages/Events';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 
