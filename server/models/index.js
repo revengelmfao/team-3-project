@@ -2,7 +2,7 @@
 
 import { readdirSync } from 'fs';
 import { basename as _basename, join } from 'path';
-import { Sequelize, DataTypes } from 'sequelize';
+import Sequelize, { DataTypes } from 'sequelize';
 import { env as _env } from 'process';
 const basename = _basename(__filename);
 const env = _env.NODE_ENV || 'development';
