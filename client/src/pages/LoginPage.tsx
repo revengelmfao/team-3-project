@@ -1,27 +1,27 @@
-import { useState } from 'react';
-import { Modal, Button } from 'antd';
+// import { useState } from 'react';
+// import { Modal, Button } from 'antd';
 import Nav from '../components/Nav';
 
-const [isLoginVisible, setLoginVisible] = useState(false);
-const [isSignupVisible, setSignupVisible] = useState(false);
+// const [isLoginVisible, setLoginVisible] = useState(false);
+// const [isSignupVisible, setSignupVisible] = useState(false);
 
-const showLogin = () => {
-  setLoginVisible(true);
-};
+// const showLogin = () => {
+//   setLoginVisible(true);
+// };
 
-const showSignup = () => {
-  setSignupVisible(true);
-};
+// const showSignup = () => {
+//   setSignupVisible(true);
+// };
 
-const handleLogin = () => {
-  //add login logic
-  setLoginVisible(false);
-};
+// const handleLogin = () => {
+//   //add login logic
+//   setLoginVisible(false);
+// };
 
-const handleSignup = () => {
-  //add signup logic
-  setSignupVisible(false);
-};
+// const handleSignup = () => {
+//   //add signup logic
+//   setSignupVisible(false);
+// };
 
 const LoginPage = () => {
   return (
@@ -31,11 +31,11 @@ const LoginPage = () => {
       </div>
       <main>
         <h2>Log in or sign up to start planning today!</h2>
-        <Button onClick={showSignup}>Sign Up</Button>
-        <Button onClick={showLogin}>Log In</Button>
       </main>
     </>
   );
 };
 
 export default LoginPage;
+//<Button onClick={showSignup}>Sign Up</Button>
+//<Button onClick={showLogin}>Log In</Button>
