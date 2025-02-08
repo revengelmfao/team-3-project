@@ -23,7 +23,7 @@ export class User
 
   async setPassword(password: string) {
     const saltRounds = 20;
-    this.password = await bcrypt(password, saltRounds);
+    this.password = await bcrypt.hash(password, saltRounds);
   }
 }
 
