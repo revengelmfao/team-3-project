@@ -38,18 +38,30 @@ export function UserFactory(sequelize: Sequelize): typeof User {
       username: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
+        validate: {
+          len: [8, 15],
+        },
       },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
+        validate: {
+          isEmail: true,
+        },
       },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          isDecimal: true,
+          min: 8,
+        },
       },
     },
     {
-      tableName: 'users',
+      modelName: 'users',
       sequelize,
       hooks: {
         beforeCreate: async (newUser: User) => {
