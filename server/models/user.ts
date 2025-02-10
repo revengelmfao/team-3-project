@@ -23,7 +23,7 @@ export class User
 
   async setPassword(password: string) {
     const saltRounds = 20;
-    this.password = await bcrypt(password, saltRounds);
+    this.password = await bcrypt.hash(password, saltRounds);
   }
 }
 
@@ -38,22 +38,34 @@ export function UserFactory(sequelize: Sequelize): typeof User {
       username: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
+        validate: {
+          len: [8, 15],
+        },
       },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
+        validate: {
+          isEmail: true,
+        },
       },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          isDecimal: true,
+          min: 8,
+        },
       },
     },
     {
-      tableName: 'users',
+      modelName: 'users',
       sequelize,
       hooks: {
-        beforeCreate: async (user: User) => {
-          await user.setPassword(user.password);
+        beforeCreate: async (newUser: User) => {
+          await newUser.setPassword(newUser.password);
         },
         beforeUpdate: async (user: User) => {
           if (user.changed('password')) {
