@@ -5,7 +5,7 @@ import Nav from '../components/Nav';
 const Plan = () => {
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent default form submission
 
     // Perform any form data handling here (e.g., saving to state or API)
@@ -17,10 +17,10 @@ const Plan = () => {
   return (
     <div>
       <Nav />
-      <div className="flex justify-center items-start h-screen top-0 left-0 fixed w-full pt-20">
+      <div className="flex justify-center items-start w-full pt-4">
         <form
-          onSubmit={handleSubmit} // Add onSubmit handler
-          className="w-full max-w-xl flex flex-col gap-4 p-6 border border-black rounded-md shadow-md"
+          onSubmit={handleSubmit}
+          className="w-full max-w-md flex flex-col gap-2 p-2 border border-black rounded-md shadow-md"
         >
           <label htmlFor="eventname">Event Name</label>
           <input type="text" id="eventname" name="eventname" required />
@@ -35,13 +35,19 @@ const Plan = () => {
           <input type="text" id="eventlocation" name="eventlocation" required />
 
           <label htmlFor="eventdescription">Event Description</label>
-          <input type="text" id="eventdescription" name="eventdescription" required />
+          <input
+            type="text"
+            id="eventdescription"
+            name="eventdescription"
+            required
+          />
 
           <button type="submit" className="bg-blue-500 text-white p-2 rounded">
             Submit
           </button>
         </form>
       </div>
+      <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     </div>
   );
 };
