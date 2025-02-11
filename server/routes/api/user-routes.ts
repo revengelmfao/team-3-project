@@ -35,11 +35,6 @@ router.get('/:id', async (req: Request, res: Response) => {
 router.post('/', async (req: Request, res: Response) => {
   const { username, password } = req.body;
   try {
-    const existingUsername = await User.findOne({ where: { username } });
-    if (existingUsername) {
-      console.log('username taken');
-      res.status(409).json('Conflict: username taken');
-    }
     const newUser = await User.create({ username, password });
     res.status(201).json(newUser);
   } catch (err) {
