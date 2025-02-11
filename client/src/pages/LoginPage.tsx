@@ -34,7 +34,6 @@ const LoginPage = () => {
     </div>
       <main>
         <div>
-          
           <h1>Sign Up</h1>
           <form className="max-w-md mx-auto">
             <div className="relative z-0 w-full mb-5 group">
