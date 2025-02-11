@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Navbar as Flowbitenav, DarkThemeToggle, Flowbite } from "flowbite-react";
+import { Navbar as Flowbitenav, DarkThemeToggle } from "flowbite-react";
 
 const Navbar = () => {
   return (
