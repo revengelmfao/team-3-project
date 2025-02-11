@@ -35,54 +35,60 @@ const SignUp = () => {
         </main>
       </div>
       <main>
-        <div>
-          <h1>Sign Up</h1>
-          <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
-            <div className="relative z-0 w-full mb-5 group">
+        <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
+          <div className="mb-5">
+            <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your username</label>
+            <input
+              type="username"
+              id="username"
+              className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light"
+              placeholder="username"
+              required
+              value={username} // Connect the state to the input
+              onChange={(e) => setUsername(e.target.value)} // Update the state on change
+            />
+          </div>
+          <div className="mb-5">
+            <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+            <input
+              type="password"
+              id="password"
+              className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light"
+              required
+              value={password} // Connect the state to the input
+              onChange={(e) => setPassword(e.target.value)} // Update the state on change
+            />
+          </div>
+          <div className="mb-5">
+            <label htmlFor="repeat-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Repeat password</label>
+            <input
+              type="password"
+              id="repeat-password"
+              className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light"
+              required
+            />
+          </div>
+          <div className="flex items-start mb-5">
+            <div className="flex items-center h-5">
               <input
-                type="text"
-                name="username"
-                id="username"
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
+                id="terms"
+                type="checkbox"
+                value=""
+                className="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
                 required
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
               />
-              <label
-                htmlFor="username"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                Username
-              </label>
             </div>
-            <div className="relative z-0 w-full mb-5 group">
-              <input
-                type="password"
-                name="password"
-                id="password"
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <label
-                htmlFor="password"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                Password
-              </label>
-            </div>
-            <button
-              type="submit"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+            <label htmlFor="terms" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+              I agree with the <a href="#" className="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>
+            </label>
+          </div>
+          <button
+            type="submit"
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Register new account
+          </button>
+        </form>
       </main>
     </>
   );

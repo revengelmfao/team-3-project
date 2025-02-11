@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import Nav from '../components/Nav';
 
-const ViewEvents = () => {
-  interface Event {
-    eventname: string;
-    eventdate: string;
-    eventtime: string;
-    eventlocation: string;
-    eventdescription: string;
-  }
+interface Event {
+  eventname: string;
+  eventdate: string;
+  eventtime: string;
+  eventlocation: string;
+  eventdescription: string;
+}
 
+const ViewEvents = () => {
   const [events, setEvents] = useState<Event[]>([]);
 
   useEffect(() => {
