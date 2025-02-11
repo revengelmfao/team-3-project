@@ -4,7 +4,6 @@ import bcrypt from 'bcrypt';
 interface UserAttributes {
   id: number;
   username: string;
-  email: string;
   password: string;
 }
 interface UserCreation extends Optional<UserAttributes, 'id'> {}
@@ -15,7 +14,6 @@ export class User
 {
   id!: number;
   username!: string;
-  email!: string;
   password!: string;
 
   createdAt?: Date;
@@ -42,14 +40,6 @@ export function UserFactory(sequelize: Sequelize): typeof User {
         unique: true,
         validate: {
           len: [8, 15],
-        },
-      },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          isEmail: true,
         },
       },
       password: {

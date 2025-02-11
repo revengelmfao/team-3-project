@@ -33,25 +33,15 @@ router.get('/:id', async (req: Request, res: Response) => {
   }
 });
 router.post('/', async (req: Request, res: Response) => {
-  //create new user
-  const { username, email, password } = req.body;
+  const { username, password } = req.body;
   try {
-    const newUser = await User.create({ username, email, password });
     const existingUsername = await User.findOne({ where: { username } });
-    const existingEmail = await User.findOne({ where: { email } });
     if (existingUsername) {
-      console.log('Username is taken.');
-      res.status(409).json('Conflict: Username taken.');
+      console.log('username taken');
+      res.status(409).json('Conflict: username taken');
     }
-    if (existingEmail) {
-      console.log('An account is already associated with this user.');
-      res.status(409).json('Conflict: Email already in use.');
-    }
-    if (newUser) {
-      res.status(201).json(newUser);
-    } else {
-      res.status(400).json('Failed to create new user.');
-    }
+    const newUser = await User.create({ username, password });
+    res.status(201).json(newUser);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
