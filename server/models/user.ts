@@ -18,8 +18,8 @@ export class User
   email!: string;
   password!: string;
 
-  readonly createdAt: Date;
-  readonly updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 
   async setPassword(password: string) {
     const saltRounds = 20;
@@ -34,6 +34,7 @@ export function UserFactory(sequelize: Sequelize): typeof User {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
+        allowNull: false,
       },
       username: {
         type: DataTypes.STRING,
@@ -55,13 +56,13 @@ export function UserFactory(sequelize: Sequelize): typeof User {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isDecimal: true,
-          min: 8,
+          len: [8, 100],
         },
       },
     },
     {
-      modelName: 'users',
+      modelName: 'user',
+      timestamps: true,
       sequelize,
       hooks: {
         beforeCreate: async (newUser: User) => {
