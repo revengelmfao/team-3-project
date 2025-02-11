@@ -1,29 +1,36 @@
-import { DataTypes, type Sequelize, Model } from 'sequelize';
+import { DataTypes, type Sequelize, Model, Optional } from 'sequelize';
+import { User } from '../models/user';
 
 interface EventAttributes {
+  id: number;
   title: string;
   location: string;
-  date: string;
-  time: number;
-  catererId?: number;
+  date: Date;
+  userId: number;
 }
 
-interface EventCreation extends EventAttributes {}
+interface EventCreation extends Optional<EventAttributes, 'id'> {}
 
 export class Event
   extends Model<EventAttributes, EventCreation>
   implements EventAttributes
 {
+  id: number;
   title!: string;
   location!: string;
-  date!: string;
-  time!: number;
-  catererId?: number;
+  date!: Date;
+  userId!: number;
 }
 
 export function EventFactory(sequelize: Sequelize) {
   Event.init(
     {
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false,
+      },
       title: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -33,16 +40,15 @@ export function EventFactory(sequelize: Sequelize) {
         allowNull: false,
       },
       date: {
-        type: DataTypes.DATEONLY,
+        type: DataTypes.DATE,
         allowNull: false,
       },
-      time: {
-        type: DataTypes.TIME,
-        allowNull: false,
-      },
-      catererId: {
+      userId: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        references: {
+          model: User,
+          key: 'id',
+        },
       },
     },
     {
