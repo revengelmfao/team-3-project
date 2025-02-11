@@ -1,11 +1,10 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Nav from '../components/Nav';
 
 const Plan = () => {
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent default form submission
 
     // Perform any form data handling here (e.g., saving to state or API)
@@ -19,7 +18,7 @@ const Plan = () => {
       <Nav />
       <div className="flex justify-center items-start h-screen top-0 left-0 fixed w-full pt-20">
         <form
-          onSubmit={handleSubmit} // Add onSubmit handler
+          onSubmit={handleSubmit}
           className="w-full max-w-xl flex flex-col gap-4 p-6 border border-black rounded-md shadow-md"
         >
           <label htmlFor="eventname">Event Name</label>
