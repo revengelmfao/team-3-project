@@ -28,7 +28,7 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="container">
+      <div>
         <Navbar />
         <main>
           <Outlet />

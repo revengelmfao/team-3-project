@@ -21,7 +21,7 @@ const ViewEvents = () => {
   return (
     <div>
       <Nav />
-      <div className="flex justify-center items-start h-screen top-0 left-0 fixed w-full pt-20">
+      <div className="flex justify-center items-start w-full pt-20">
         <div className="w-full max-w-xl p-6 border border-black rounded-md shadow-md">
           <h1 className="text-2xl font-bold mb-4">View Events</h1>
           {events.length > 0 ? (
