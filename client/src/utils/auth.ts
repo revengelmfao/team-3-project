@@ -1,4 +1,4 @@
-import { JwtPayload, jwtDecode } from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 
 class AuthService {
   static getProfile() {
@@ -16,7 +16,7 @@ class AuthService {
 
   static isTokenExpired(token: string) {
     //check if current time is passed the token expiration
-    const decodedToken: JwtPayload = this.getProfile();
+    const decodedToken: any = this.getProfile();
     if (!token || !decodedToken.exp) {
       return true;
     } else {
