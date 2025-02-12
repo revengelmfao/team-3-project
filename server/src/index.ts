@@ -1,7 +1,16 @@
 import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import { getCoordinates } from "./googleMaps";
+import sequelize from '../config/connection.js';
+import { UserFactory } from '../models/user.js';
+import { EventFactory } from '../models/event.js';
 
+const User = UserFactory(sequelize);
+const Event = EventFactory(sequelize);
+
+User.hasMany(Event, {
+  onDelete: 'CASCADE',
+});
 const app: any = express();
 const PORT = 5000;
 

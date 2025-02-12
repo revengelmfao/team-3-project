@@ -4,8 +4,12 @@ import { User } from '../models/user';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
+// Login function to authenticate a user
 export const login = async (req: Request, res: Response): Promise<void> => {
-  const { username, password } = req.body;
+  
+  const { username, password } = req.body; // Extract username and password from request body
+
+    // Find the user in the database by username
   const user = await User.findOne({
     where: { username },
   });
