@@ -1,4 +1,4 @@
-//these are the routes for CRUD
+~//these are the routes for CRUD
 import express from 'express';
 import type { Request, Response } from 'express';
 import { User } from '../../models/user';
