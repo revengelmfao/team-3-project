@@ -4,7 +4,6 @@ import bcrypt from 'bcrypt';
 interface UserAttributes {
   id: number;
   username: string;
-  email: string;
   password: string;
 }
 interface UserCreation extends Optional<UserAttributes, 'id'> {}
@@ -15,11 +14,10 @@ export class User
 {
   id!: number;
   username!: string;
-  email!: string;
   password!: string;
 
-  readonly createdAt: Date;
-  readonly updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 
   async setPassword(password: string) {
     const saltRounds = 20;
@@ -34,6 +32,7 @@ export function UserFactory(sequelize: Sequelize): typeof User {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
+        allowNull: false,
       },
       username: {
         type: DataTypes.STRING,
@@ -43,25 +42,17 @@ export function UserFactory(sequelize: Sequelize): typeof User {
           len: [8, 15],
         },
       },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          isEmail: true,
-        },
-      },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isDecimal: true,
-          min: 8,
+          len: [8, 100],
         },
       },
     },
     {
-      modelName: 'users',
+      modelName: 'user',
+      timestamps: true,
       sequelize,
       hooks: {
         beforeCreate: async (newUser: User) => {
