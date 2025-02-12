@@ -9,17 +9,19 @@ const __dirname = dirname(__filename);
 
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
-const sequelize = new Sequelize(
-  'database_development', // Database name
-  'postgres', // Username
-  process.env.DB_PASSWORD, // Password
-  {
-    host: 'localhost',
-    dialect: 'postgres',
-    dialectOptions: {
-      decimalNumbers: true,
-    },
-  }
-);
+const sequelize = process.env.DB_URL
+  ? new Sequelize(process.env.DB_URL)
+  : new Sequelize(
+      'database_development', // Database name
+      'postgres', // Username
+      process.env.DB_PASSWORD, // Password
+      {
+        host: 'localhost',
+        dialect: 'postgres',
+        dialectOptions: {
+          decimalNumbers: true,
+        },
+      }
+    );
 
 export default sequelize;
