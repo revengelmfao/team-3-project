@@ -33,10 +33,13 @@ Ensure you have the following installed:
                      WHEN I sign up,
                      THEN I can create an event by filling out a form
   
-  2. **Second Usage** After logged in,
-                      
+  2. **Second Usage** As a user,
+                      WHEN I submit the event,
+                      THEN it appears in a list of events,
+                      WHEN I view my events,
+                      THEN I can invite other users,
+                      WHEN I log out, I am redirected to the home landing page                    
      
-
 ## **Future Enhancements**
 * Styling whether the layout needs some adjustments.
 * Google Maps is not there yet that would be handy.
