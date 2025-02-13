@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+~//these are the routes for CRUD
+=======
 //these are the routes for CRUD for USERS
+>>>>>>> 8a5eff5107254a9b71c04097e4004ee5fa18bc9d
 import express from 'express';
 import type { Request, Response } from 'express';
 import { User } from '../../models/user';
