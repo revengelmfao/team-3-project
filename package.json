@@ -19,11 +19,26 @@
     "start": "cd server && npm run start"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "dotenv": "^16.4.7",
+    "flowbite": "^3.1.2",
+    "flowbite-react": "^0.10.2",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
+    "pg": "^8.13.1",
+    "pg-hstore": "^2.3.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.1.5",
+    "sequelize": "^6.37.5",
+    "sequelize-cli": "^6.6.2"
+=======
     "@tailwindcss/postcss": "^4.0.3",
     "@tailwindcss/vite": "^4.0.3",
     "@types/cors": "^2.8.17",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7"
+>>>>>>> 5f3037cd77103fa556cb93d8e75584567b8e7814
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
