@@ -1,11 +1,12 @@
 # **App Title**
-
+Events Sphere
 
 ## **Overview**
 
-The purpose of this app is to provide an easy to use interface so that people can plan their events with ease as well as find different dishes using spoonaculars API to find different recipes tailored to what the user searches for.
+The purpose of this app is to provide an easy to use interface so that people can plan their events with ease as well as find different dishes using Google Map API, Places API to find different recipes tailored to what the user searches for.
+
 ## **Features**
-* *Feature goes here*
+* *Features a login page, with user credentials, as well as email, phone number. Which will then take you to the main page*
 
 
 ## **Technologies Used**
@@ -27,15 +28,23 @@ Ensure you have the following installed:
   3. Open the index.html file in your browser to start the application.
  
   ## **Usage**
-  1. **First Usage**
+  1. **First Usage** As a user, 
+                     WHEN I load the application, I am prompted to sign up or log in.
+                     WHEN I sign up,
+                     THEN I can create an event by filling out a form
      
 
 ## **Future Enhancements**
-* Future Enhancements
+* Styling whether the layout needs some adjustments.
+* Google Maps is not there yet that would be handy.
+* Make the application fully functional with all the intended features
+* Improve UI/UX for a more intuitive user experience.
+* Spoonacular 
+
 
 
 ## Deployed application: 
-Link goes here
+* https://team-3-project.onrender.com/
 
 ---
 ## **Contributers**
