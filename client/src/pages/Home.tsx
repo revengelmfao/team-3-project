@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Nav';
 import { Outlet } from 'react-router-dom';
+import { Button } from "flowbite-react";
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -82,13 +83,12 @@ const SignUp = () => {
               I agree with the <a href="#" className="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>
             </label>
           </div>
-          <button
+          <Button
             type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             Register new account
-          </button>
-        </form>
+            </Button>        
+            </form>
       </main>
     </>
   );

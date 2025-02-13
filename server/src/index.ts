@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import { getCoordinates } from "./googleMaps";
 
@@ -8,14 +8,15 @@ const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
-app.get("/get-location", async (req: Request, res: Response, next: NextFunction) => {
+app.get("/get-location", async (req: Request, res: Response) => {
   const address = req.query.address as string;
 
   if (!address) {
     return res.status(400).json({ error: "Address is required" });
   }
 
-  const coordinates = await getCoordinates(address) as { lat: number; lng: number } | null;
+  const result = await getCoordinates(address);
+  const coordinates = result ? { lat: result.latitude, lng: result.longitude } : null;
 
   if (!coordinates) {
     return res.status(500).json({ error: "Failed to fetch coordinates" });
