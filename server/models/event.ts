@@ -6,6 +6,7 @@ interface EventAttributes {
   title: string;
   location: string;
   date: Date;
+  time: string; // Add time attribute
   userId: number;
 }
 
@@ -15,10 +16,11 @@ export class Event
   extends Model<EventAttributes, EventCreation>
   implements EventAttributes
 {
-  id: number;
+  id!: number;
   title!: string;
   location!: string;
   date!: Date;
+  time!: string; // Add time attribute
   userId!: number;
 }
 
@@ -41,6 +43,10 @@ export function EventFactory(sequelize: Sequelize) {
       },
       date: {
         type: DataTypes.DATE,
+        allowNull: false,
+      },
+      time: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
       userId: {

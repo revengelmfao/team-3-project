@@ -1,9 +1,6 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    // other options
-    "esModuleInterop": true,
-
     /* Modules */
     "rootDir": "src" /* Specify the root folder within your source files. */,
 

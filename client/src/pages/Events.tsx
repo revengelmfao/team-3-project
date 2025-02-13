@@ -24,7 +24,9 @@ const defaultCenter = {
 
 const ViewEvents = () => {
   const [events, setEvents] = useState<Event[]>([]);
-  const [markerPositions, setMarkerPositions] = useState<google.maps.LatLngLiteral[]>([]);
+  const [markerPositions, setMarkerPositions] = useState<
+    google.maps.LatLngLiteral[]
+  >([]);
   const [editEventIndex, setEditEventIndex] = useState<number | null>(null);
   const [editedEvent, setEditedEvent] = useState<Event | null>(null);
 
@@ -34,7 +36,9 @@ const ViewEvents = () => {
 
   useEffect(() => {
     // Fetch events from localStorage
-    const savedEvents: Event[] = JSON.parse(localStorage.getItem('events') || '[]');
+    const savedEvents: Event[] = JSON.parse(
+      localStorage.getItem('events') || '[]'
+    );
     setEvents(savedEvents);
 
     // Geocode event locations to get marker positions
@@ -43,14 +47,17 @@ const ViewEvents = () => {
       const positions = await Promise.all(
         savedEvents.map((event) => {
           return new Promise<google.maps.LatLngLiteral>((resolve) => {
-            geocoder.geocode({ address: event.eventlocation }, (results, status) => {
-              if (status === 'OK' && results?.[0]) {
-                const location = results[0].geometry.location;
-                resolve({ lat: location.lat(), lng: location.lng() });
-              } else {
-                resolve(defaultCenter); // Fallback to default center if geocoding fails
+            geocoder.geocode(
+              { address: event.eventlocation },
+              (results, status) => {
+                if (status === 'OK' && results?.[0]) {
+                  const location = results[0].geometry.location;
+                  resolve({ lat: location.lat(), lng: location.lng() });
+                } else {
+                  resolve(defaultCenter); // Fallback to default center if geocoding fails
+                }
               }
-            });
+            );
           });
         })
       );
@@ -97,14 +104,20 @@ const ViewEvents = () => {
             <h1 className="text-2xl font-bold mb-4">View Events</h1>
             {events.length > 0 ? (
               events.map((event, index) => (
-                <div key={index} className="mb-4 p-4 border border-gray-300 rounded-md">
+                <div
+                  key={index}
+                  className="mb-4 p-4 border border-gray-300 rounded-md"
+                >
                   {editEventIndex === index ? (
                     <div>
                       <input
                         type="text"
                         value={editedEvent?.eventname}
                         onChange={(e) =>
-                          setEditedEvent({ ...editedEvent!, eventname: e.target.value })
+                          setEditedEvent({
+                            ...editedEvent!,
+                            eventname: e.target.value,
+                          })
                         }
                       />
                       {/* Add similar input fields for other event properties */}
@@ -112,13 +125,26 @@ const ViewEvents = () => {
                     </div>
                   ) : (
                     <div>
-                      <p><strong>Event Name:</strong> {event.eventname}</p>
-                      <p><strong>Event Date:</strong> {event.eventdate}</p>
-                      <p><strong>Event Time:</strong> {event.eventtime}</p>
-                      <p><strong>Event Location:</strong> {event.eventlocation}</p>
-                      <p><strong>Event Description:</strong> {event.eventdescription}</p>
+                      <p>
+                        <strong>Event Name:</strong> {event.eventname}
+                      </p>
+                      <p>
+                        <strong>Event Date:</strong> {event.eventdate}
+                      </p>
+                      <p>
+                        <strong>Event Time:</strong> {event.eventtime}
+                      </p>
+                      <p>
+                        <strong>Event Location:</strong> {event.eventlocation}
+                      </p>
+                      <p>
+                        <strong>Event Description:</strong>{' '}
+                        {event.eventdescription}
+                      </p>
                       <button onClick={() => handleEdit(index)}>Edit</button>
-                      <button onClick={() => handleDelete(index)}>Delete</button>
+                      <button onClick={() => handleDelete(index)}>
+                        Delete
+                      </button>
                     </div>
                   )}
                 </div>

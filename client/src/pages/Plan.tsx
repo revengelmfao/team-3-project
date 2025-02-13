@@ -3,45 +3,55 @@ import { useNavigate } from 'react-router-dom';
 import Nav from '../components/Nav';
 
 interface Event {
-  eventname: string;
-  eventdate: string;
-  eventtime: string;
-  eventlocation: string;
-  eventdescription: string;
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  userId: number;
 }
 
 const Plan = () => {
   const navigate = useNavigate();
   const [eventData, setEventData] = useState<Event>({
-    eventname: '',
-    eventdate: '',
-    eventtime: '',
-    eventlocation: '',
-    eventdescription: '',
+    title: '',
+    date: '',
+    time: '',
+    location: '',
+    userId: 12345, // Replace with actual userId
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setEventData(prevData => ({
+    setEventData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Get existing events from localStorage
-    const existingEvents = JSON.parse(localStorage.getItem('events') || '[]') as Event[];
+    try {
+      const response = await fetch('/api/events', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(eventData),
+      });
 
-    // Add the new event to the array
-    const updatedEvents = [...existingEvents, eventData];
-
-    // Save the updated array back to localStorage
-    localStorage.setItem('events', JSON.stringify(updatedEvents));
-
-    // Redirect to the "View Events" page
-    navigate('/events');
+      if (response.ok) {
+        // Redirect to the "View Events" page
+        navigate('/events');
+      } else {
+        // Handle error
+        console.error('Failed to create event');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -52,52 +62,42 @@ const Plan = () => {
           onSubmit={handleSubmit}
           className="w-full max-w-xl flex flex-col gap-4 p-6 border border-black rounded-md shadow-md"
         >
-          <label htmlFor="eventname">Event Name</label>
+          <label htmlFor="title">Event Name</label>
           <input
             type="text"
-            id="eventname"
-            name="eventname"
-            value={eventData.eventname}
+            id="title"
+            name="title"
+            value={eventData.title}
             onChange={handleChange}
             required
           />
 
-          <label htmlFor="eventdate">Event Date</label>
+          <label htmlFor="date">Event Date</label>
           <input
             type="date"
-            id="eventdate"
-            name="eventdate"
-            value={eventData.eventdate}
+            id="date"
+            name="date"
+            value={eventData.date}
             onChange={handleChange}
             required
           />
 
-          <label htmlFor="eventtime">Event Time</label>
+          <label htmlFor="time">Event Time</label>
           <input
             type="time"
-            id="eventtime"
-            name="eventtime"
-            value={eventData.eventtime}
+            id="time"
+            name="time"
+            value={eventData.time}
             onChange={handleChange}
             required
           />
 
-          <label htmlFor="eventlocation">Event Location</label>
+          <label htmlFor="location">Event Location</label>
           <input
             type="text"
-            id="eventlocation"
-            name="eventlocation"
-            value={eventData.eventlocation}
-            onChange={handleChange}
-            required
-          />
-
-          <label htmlFor="eventdescription">Event Description</label>
-          <input
-            type="text"
-            id="eventdescription"
-            name="eventdescription"
-            value={eventData.eventdescription}
+            id="location"
+            name="location"
+            value={eventData.location}
             onChange={handleChange}
             required
           />

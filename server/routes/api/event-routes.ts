@@ -12,7 +12,7 @@ router.get('/', async (_req: Request, res: Response) => {
     res.json(events);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: (err as Error).message });
   }
 });
 router.get('/:id', async (req: Request, res: Response) => {
@@ -27,14 +27,20 @@ router.get('/:id', async (req: Request, res: Response) => {
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: (err as Error).message });
   }
 });
 router.post('/', async (req: Request, res: Response) => {
   //create new event
-  const { title, location, date, userId } = req.body;
+  const { title, location, date, time, userId } = req.body;
   try {
-    const newEvent = await Event.create({ title, location, date, userId });
+    const newEvent = await Event.create({
+      title,
+      location,
+      date,
+      time,
+      userId,
+    });
     res.status(201).json(newEvent);
   } catch (err) {
     console.error(err);
@@ -64,7 +70,7 @@ router.put('/:id', async (req: Request, res: Response) => {
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: (err as Error).message });
   }
 });
 router.delete('/:id', async (req: Request, res: Response) => {
@@ -79,7 +85,7 @@ router.delete('/:id', async (req: Request, res: Response) => {
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: (err as Error).message });
   }
 });
 
