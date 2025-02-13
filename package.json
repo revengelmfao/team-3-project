@@ -12,7 +12,7 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "client:dev": "cd client && npm run dev",
     "client:build": "cd client && npm run build",
-    "dev": "vite",
+    "dev": "ts-node server.js",
     "build": "npm run client:build && npm run server:build",
     "lint": "eslint .",
     "preview": "vite preview",
