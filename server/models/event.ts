@@ -16,7 +16,7 @@ export class Event
   extends Model<EventAttributes, EventCreation>
   implements EventAttributes
 {
-  id: number;
+  id!: number;
   title!: string;
   location!: string;
   date!: Date;

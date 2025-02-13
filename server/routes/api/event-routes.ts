@@ -12,7 +12,7 @@ router.get('/', async (_req: Request, res: Response) => {
     res.json(events);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: (err as Error).message });
   }
 });
 router.get('/:id', async (req: Request, res: Response) => {
@@ -27,7 +27,7 @@ router.get('/:id', async (req: Request, res: Response) => {
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: (err as Error).message });
   }
 });
 router.post('/', async (req: Request, res: Response) => {
@@ -70,7 +70,7 @@ router.put('/:id', async (req: Request, res: Response) => {
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: (err as Error).message });
   }
 });
 router.delete('/:id', async (req: Request, res: Response) => {
@@ -85,7 +85,7 @@ router.delete('/:id', async (req: Request, res: Response) => {
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: (err as Error).message });
   }
 });
 
