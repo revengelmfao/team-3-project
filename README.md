@@ -10,7 +10,7 @@ The purpose of this app is to provide an easy to use interface so that people ca
 
 
 ## **Technologies Used**
-* **HTML:**  For semantic and accesible content structure.
+* **HTML:**  For semantic and accessible content structure.
 * **CSS:** To style the applicatio and ensure a responsive design.
 * **JavaScript:** From DOM manipulation, form validation, and dynamic updates.
 * **localStorage:** For persistent data storage across sessions.
@@ -32,6 +32,9 @@ Ensure you have the following installed:
                      WHEN I load the application, I am prompted to sign up or log in.
                      WHEN I sign up,
                      THEN I can create an event by filling out a form
+  
+  2. **Second Usage** After logged in,
+                      
      
 
 ## **Future Enhancements**
