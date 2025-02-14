@@ -12,7 +12,7 @@ router.get('/', async (_req: Request, res: Response) => {
       attributes: { exclude: ['password'] },
     });
     res.json(users);
-  } catch (err) {
+  } catch (err: any) {
     res.status(500).json({ message: err.message });
   }
 });
@@ -28,7 +28,7 @@ router.get('/:id', async (req: Request, res: Response) => {
     } else {
       res.status(404).json('User not found.');
     }
-  } catch (err) {
+  } catch (err: any) {
     res.status(500).json({ message: err.message });
   }
 });
@@ -37,7 +37,7 @@ router.post('/', async (req: Request, res: Response) => {
   try {
     const newUser = await User.create({ username, password });
     res.status(201).json(newUser);
-  } catch (err) {
+  } catch (err: any) {
     res.status(500).json({ message: err.message });
   }
 });
@@ -59,7 +59,7 @@ router.put('/:id', async (req: Request, res: Response) => {
     } else {
       res.status(404).json('User not found.');
     }
-  } catch (err) {
+  } catch (err: any) {
     res.status(500).json({ message: err.message });
   }
 });
@@ -74,7 +74,7 @@ router.delete('/:id', async (req: Request, res: Response) => {
     } else {
       res.status(404).json({ message: 'User not found.' });
     }
-  } catch (err) {
+  } catch (err: any) {
     res.status(500).json({ message: err.message });
   }
 });
